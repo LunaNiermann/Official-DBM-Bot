@@ -1,0 +1,293 @@
+{
+  "name": "warnings",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "XRhin",
+  "actions": [
+    {
+      "storage": "1",
+      "varName": "user_id",
+      "changeType": "0",
+      "value": "member.user.id",
+      "name": "Control Variable"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "ADMINISTRATOR",
+      "iftrue": "0",
+      "iftrueVal": "14",
+      "iffalse": "3",
+      "iffalseVal": "3",
+      "name": "Check Member Permissions"
+    },
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "2",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Parameters"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "req_id",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "1",
+      "varName": "user_id",
+      "changeType": "0",
+      "value": "tempVars(\"req_id\")",
+      "name": "Control Variable"
+    },
+    {
+      "comment": "^ admeen ^",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "0",
+      "varName": "pending-totalpoints",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `user_id`, SUM(points) AS `points` FROM `warnings` WHERE `user_id` = ${tempVars(\"user_id\")}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var points = tempVars(\"pending-totalpoints\")[0].points;\nconsole.log(points);\n\nif(points !== null && typeof points !== \"object\") {\nthis.storeValue(points, 1, \"totalpoints\", cache);\n} else {\nthis.storeValue(\"0\", 1, \"totalpoints\", cache);\n}",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "pending-reasons",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `reason` FROM `warnings` WHERE `user_id` = ${tempVars(\"user_id\")}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "pending-points",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `points` FROM `warnings` WHERE `user_id` = ${tempVars(\"user_id\")}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "pending-case_id",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `case_id` FROM `warnings` WHERE `user_id` = ${tempVars(\"user_id\")}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var a = tempVars(\"pending-reasons\");\n\nvar arr = []\nb = JSON.parse(a)\nfor (var i in b) {\narr.push(b[i].reason)\n};\n\nthis.storeValue(arr, 1, \"pending-reasons\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var a = tempVars(\"pending-points\");\n\nvar arr = []\nb = JSON.parse(a)\nfor (var i in b) {\narr.push(b[i].points)\n};\n\nthis.storeValue(arr, 1, \"pending-points\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var a = tempVars(\"pending-case_id\");\n\nvar arr = []\nb = JSON.parse(a)\nfor (var i in b) {\narr.push(b[i].case_id)\n};\n\nthis.storeValue(arr, 1, \"pending-case_id\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "list": "7",
+      "varName": "pending-reasons",
+      "start": "- ",
+      "middle": "",
+      "end": "\\n",
+      "storage": "1",
+      "varName2": "reasons",
+      "sort": "1",
+      "name": "Convert List to Text"
+    },
+    {
+      "list": "7",
+      "varName": "pending-points",
+      "start": "",
+      "middle": "",
+      "end": "\\n",
+      "storage": "1",
+      "varName2": "points",
+      "sort": "1",
+      "name": "Convert List to Text"
+    },
+    {
+      "list": "7",
+      "varName": "pending-case_id",
+      "start": "**#",
+      "middle": "",
+      "end": "**\\n",
+      "storage": "1",
+      "varName2": "case_id",
+      "sort": "1",
+      "name": "Convert List to Text"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"user_id\")}",
+      "storage": "1",
+      "varName": "req_member",
+      "name": "Find Member"
+    },
+    {
+      "storage": "1",
+      "varName": "req_member",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "The user is not in this server but here is the data:\n\nID: ${tempVars(\"user_id\")}\nTotal points: ${tempVars(\"totalpoints\")}\nCase IDs: ${tempVars(\"case_id\")}\nPoints: ${tempVars(\"points\")}\nReasons: ${tempVars(\"reasons\")}",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "title": "",
+      "author": "${tempVars(\"req_member\").user.username}",
+      "color": "05c163",
+      "timestamp": "true",
+      "url": "",
+      "authorIcon": "${tempVars(\"req_member\").user.displayAvatarURL}",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "case_id",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "3",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Case ID",
+      "message": "${tempVars(\"case_id\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Points",
+      "message": "${tempVars(\"points\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Reasons",
+      "message": "${tempVars(\"reasons\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "You have ${tempVars(\"totalpoints\")} warning points!",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    }
+  ],
+  "comType": "0",
+  "_aliases": [
+    "warns"
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "name": "onMemberJoin",
+  "temp": "mem",
+  "event-type": "6",
+  "_id": "PPTCU",
+  "actions": [
+    {
+      "member": "2",
+      "varName": "mem",
+      "info": "3",
+      "storage": "1",
+      "varName2": "nick",
+      "name": "Store Member Info"
+    },
+    {
+      "storage": "1",
+      "varName": "nick",
+      "comparison": "5",
+      "value": "\"!\"",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "5",
+      "name": "Check Variable"
+    },
+    {
+      "behavior": "1",
+      "interpretation": "0",
+      "code": "var string = tempVars(\"nick\");\nvar newString = string.replace('!','').replace('.','').replace('[','');\nthis.storeValue(newString, 1, \"newnick\", cache);\nthis.callNextAction(cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "member": "2",
+      "varName": "mem",
+      "nickname": "${tempVars(\"newnick\")}",
+      "name": "Set Member Nickname"
+    },
+    {
+      "info": "1",
+      "find": "join-log",
+      "storage": "1",
+      "varName": "joinlog",
+      "name": "Find Channel"
+    },
+    {
+      "channel": "5",
+      "varName": "joinlog",
+      "message": "Updated ${tempVars(\"mem\")}: `${tempVars(\"nick\")}` -> `${tempVars(\"newnick\")}`",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "comment": "v Ban check v",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "0",
+      "varName": "pending-totalpoints",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `user_id`, SUM(points) AS `points` FROM `warnings` WHERE `user_id` = ${tempVars(\"mem\").user.id}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var points = tempVars(\"pending-totalpoints\")[0].points;\nconsole.log(points);\n\nif(points !== null && typeof points !== \"object\") {\nthis.storeValue(points, 1, \"totalpoints\", cache);\n} else {\nthis.storeValue(\"0\", 1, \"totalpoints\", cache);\n}",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "varName": "totalpoints",
+      "comparison": "4",
+      "value": "4",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "7",
+      "varName": "mod-area",
+      "message": "Going to ban ${tempVars(\"mem\")} (${tempVars(\"mem\").user.id}) now. They have ${tempVars(\"totalpoints\")} points and just joined!",
+      "storage": "1",
+      "varName2": "msg",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "channel": "5",
+      "varName": "mem",
+      "message": "You have been banned manually. Please contact us on https://dbm-support.site if you think your ban is wrong.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "member": "2",
+      "varName": "mem",
+      "reason": "Manual set by moderator!",
+      "name": "Ban Member"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "emoji": "4",
+      "varName2": "😤",
+      "varName3": "",
+      "name": "Add Reaction"
+    }
+  ]
+}

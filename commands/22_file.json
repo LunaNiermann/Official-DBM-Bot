@@ -1,0 +1,22 @@
+{
+  "name": "file",
+  "permissions": "ADMINISTRATOR",
+  "restriction": "0",
+  "_id": "rBpKr",
+  "actions": [
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "file-name",
+      "name": "Store Command Params"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "file": "actions/${tempVars(\"file-name\")}.js",
+      "message": "There we go:",
+      "name": "Send File"
+    }
+  ]
+}

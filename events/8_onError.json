@@ -1,0 +1,63 @@
+{
+  "name": "onError",
+  "temp": "err",
+  "event-type": "37",
+  "_id": "tzruX",
+  "actions": [
+    {
+      "title": "Bot -> RIP!",
+      "author": "",
+      "color": "",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "The bot (maybe) still works. This is only an error.",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "DBM Error:",
+      "message": "${tempVars(\"err\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "channel": "7",
+      "varName": "bot-log",
+      "message": "<@268737698397814784>",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "7",
+      "varName2": "bot-log",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "channel": "7",
+      "varName": "bot-log",
+      "message": "```${tempVars(\"jserr\")}```",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ],
+  "temp2": "jserr"
+}

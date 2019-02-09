@@ -1,0 +1,172 @@
+{
+  "name": "LogMessageEdit",
+  "temp": "oldmsg",
+  "event-type": "26",
+  "_id": "OFecO",
+  "actions": [
+    {
+      "message": "1",
+      "varName": "oldmsg",
+      "info": "2",
+      "storage": "1",
+      "varName2": "oldmsgtxt",
+      "name": "Store Message Info"
+    },
+    {
+      "message": "1",
+      "varName": "newmsg",
+      "info": "2",
+      "storage": "1",
+      "varName2": "newmsgtxt",
+      "name": "Store Message Info"
+    },
+    {
+      "storage": "1",
+      "varName": "oldmsgtxt",
+      "comparison": "1",
+      "value": "tempVars(\"newmsgtxt\")",
+      "iftrue": "1",
+      "iftrueVal": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "message": "1",
+      "varName": "newmsg",
+      "info": "3",
+      "storage": "1",
+      "varName2": "author",
+      "name": "Store Message Info"
+    },
+    {
+      "title": "",
+      "author": "${tempVars(\"author\").user.username}",
+      "color": "4286f4",
+      "timestamp": "true",
+      "url": "",
+      "authorIcon": "${tempVars(\"author\").user.displayAvatarURL}",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "[Beam me up, Scotty](https://canary.discordapp.com/channels/335407595890409472/${tempVars(\"newmsg\").channel.id}/${tempVars(\"newmsg\").id})",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "oldmsgtxt",
+      "comparison": "7",
+      "value": "1024",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Before",
+      "message": "[Too long]",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "count": "1",
+      "name": "Skip Actions"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Before",
+      "message": "${tempVars(\"oldmsgtxt\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "newmsgtxt",
+      "comparison": "7",
+      "value": "1024",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "After",
+      "message": "[Too long]",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "count": "1",
+      "name": "Skip Actions"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "After",
+      "message": "${tempVars(\"newmsgtxt\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "In #${tempVars(\"newmsg\").channel.name} | ID: ${tempVars(\"newmsg\").id}",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "7",
+      "varName2": "bot-log",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "comment": "v Invite? => BANNED v",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "varName": "newmsgtxt",
+      "comparison": "6",
+      "value": "(discord.gg/|discordapp.com/invite|discord.me/)",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "newmsg",
+      "name": "Delete Message"
+    },
+    {
+      "channel": "7",
+      "varName": "mod-area",
+      "message": "${tempVars(\"author\")} edited a message and added an invite! (#${tempVars(\"channel_na\")})\n`${tempVars(\"newmsg\")}`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ],
+  "temp2": "newmsg"
+}

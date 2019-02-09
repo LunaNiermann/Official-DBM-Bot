@@ -1,0 +1,116 @@
+{
+  "name": "(discord.gg/|discordapp.com/invite|discord.me/)",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "lRInY",
+  "actions": [
+    {
+      "member": "1",
+      "varName": "",
+      "role": "5",
+      "varName2": "expert-role",
+      "iftrue": "1",
+      "iftrueVal": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If Member has Role"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "role": "5",
+      "varName2": "mod-role",
+      "iftrue": "1",
+      "iftrueVal": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If Member has Role"
+    },
+    {
+      "message": "0",
+      "varName": "",
+      "info": "0",
+      "storage": "1",
+      "varName2": "message",
+      "name": "Store Message Info"
+    },
+    {
+      "message": "0",
+      "varName": "",
+      "info": "2",
+      "storage": "1",
+      "varName2": "text",
+      "name": "Store Message Info"
+    },
+    {
+      "title": "Discord Invite",
+      "author": "${member.user.username}",
+      "color": "fc3535",
+      "timestamp": "true",
+      "url": "",
+      "authorIcon": "${member.user.displayAvatarURL}",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "By: ${member}\nIn: ${msg.channel}\n[Beam me up, Scotty](https://discordapp.com/channels/335407595890409472/${tempVars(\"message\").channel.id}/${tempVars(\"message\").id})\n\nMessage:\n${tempVars(\"text\")}",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "I deleted this message.",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "7",
+      "varName2": "bot-log",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "7",
+      "varName2": "mod-area",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "***${member} Discord links aren't allowed here!***",
+      "storage": "1",
+      "varName2": "status",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "1",
+      "varName": "status",
+      "name": "Delete Message"
+    }
+  ],
+  "comType": "2"
+}

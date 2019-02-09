@@ -1,0 +1,21 @@
+{
+  "name": "[Init] Init Database",
+  "temp": "",
+  "event-type": "1",
+  "_id": "qYxGu",
+  "actions": [
+    {
+      "behavior": "3",
+      "name": "Run Action Sequence Once"
+    },
+    {
+      "source": "hSDWO",
+      "type": "true",
+      "name": "Call Command/Event"
+    },
+    {
+      "tosend": "Connected with Database!",
+      "name": "Send Message to Console"
+    }
+  ]
+}

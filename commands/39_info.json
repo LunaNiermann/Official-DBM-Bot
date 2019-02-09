@@ -1,0 +1,236 @@
+{
+  "name": "info",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "MnoAE",
+  "actions": [
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "0",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "😐 `!info [name]`\nDo `!help` in <#407233336335925249> to view all available infos.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "input",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "results-names",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `name` FROM `infonames`",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "0",
+      "name": "Run SQL Query"
+    },
+    {
+      "storage": "1",
+      "varName": "results-names",
+      "comparison": "5",
+      "value": "tempVars(\"input\")",
+      "iftrue": "3",
+      "iftrueVal": "7",
+      "iffalse": "0",
+      "iffalseVal": "9",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "results-ids",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `id` FROM `infonames`",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "0",
+      "name": "Run SQL Query"
+    },
+    {
+      "storage": "1",
+      "varName": "results-ids",
+      "comparison": "5",
+      "value": "tempVars(\"input\")",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":astonished: Sorry! That info does not exist ¯\\_(ツ)_/¯",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "^ check if info exists ^",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "varName": "type",
+      "changeType": "0",
+      "value": "\"id\"",
+      "name": "Control Variable"
+    },
+    {
+      "count": "1",
+      "name": "Skip Actions"
+    },
+    {
+      "storage": "1",
+      "varName": "type",
+      "changeType": "0",
+      "value": "\"name\"",
+      "name": "Control Variable"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "0",
+      "varName": "results",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT * FROM `infonames` WHERE `${tempVars(\"type\")}` = \"${tempVars(\"input\")}\";",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var id = tempVars(\"results\")[0].id;\nvar name = tempVars(\"results\")[0].name;\nvar friendly_name = tempVars(\"results\")[0].friendly_name;\nvar content = tempVars(\"results\")[0].content;\nvar image_link = tempVars(\"results\")[0].image_link;\nvar views = tempVars(\"results\")[0].views;\n\nthis.storeValue(id, 1, \"id\", cache);\nthis.storeValue(name, 1, \"name\", cache);\nthis.storeValue(friendly_name, 1, \"friendly_name\", cache);\nthis.storeValue(content, 1, \"content\", cache);\nthis.storeValue(image_link, 1, \"image_link\", cache);\nthis.storeValue(views, 1, \"views\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "if(tempVars(\"image_link\")) {\nthis.storeValue(tempVars(\"image_link\"), 1, \"image_link_confirmed\", cache);\n} else {\nthis.storeValue(\"\", 1, \"image_link_confirmed\", cache)\n}\n\nif(tempVars(\"friendly_name\")) {\nthis.storeValue(tempVars(\"friendly_name\"), 1, \"friendly_name_confirmed\", cache);\n} else {\nthis.storeValue(tempVars(\"name\"), 1, \"friendly_name_confirmed\", cache);\n}",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "varName": "name",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "title": "**${tempVars(\"friendly_name_confirmed\")}**",
+      "author": "${member.user.username}",
+      "color": "407cdd",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "${member.user.displayAvatarURL}",
+      "imageUrl": "${tempVars(\"image_link_confirmed\")}",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "${tempVars(\"content\")}",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "👀 Views: ${tempVars(\"views\")} (ID: ${tempVars(\"id\")})",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "1",
+      "varName3": "sent-embed",
+      "name": "Send Embed Message"
+    },
+    {
+      "storage": "0",
+      "stringifyOutput": "0",
+      "varName": "",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "UPDATE `infonames` SET `views` = ${tempVars(\"views\") + 1} WHERE `${tempVars(\"type\")}` = \"${tempVars(\"input\")}\"",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "0",
+      "name": "Run SQL Query"
+    }
+  ],
+  "_aliases": [],
+  "comType": "0"
+}

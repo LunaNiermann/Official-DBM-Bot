@@ -1,0 +1,224 @@
+{
+  "name": "help",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "FJgZk",
+  "actions": [
+    {
+      "message": "0",
+      "varName": "",
+      "info": "4",
+      "storage": "1",
+      "varName2": "msg-channel",
+      "name": "Store Message Info"
+    },
+    {
+      "info": "1",
+      "find": "bot-commands",
+      "storage": "1",
+      "varName": "bot-commands",
+      "name": "Find Channel"
+    },
+    {
+      "info": "1",
+      "find": "mod-test-channel",
+      "storage": "1",
+      "varName": "mod-test-channel",
+      "name": "Find Channel"
+    },
+    {
+      "storage": "1",
+      "varName": "msg-channel",
+      "comparison": "1",
+      "value": "tempVars(\"bot-commands\")",
+      "iftrue": "2",
+      "iftrueVal": "11",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "msg-channel",
+      "comparison": "1",
+      "value": "tempVars(\"mod-test-channel\")",
+      "iftrue": "2",
+      "iftrueVal": "11",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "This command is only available in ${tempVars(\"bot-commands\")}!",
+      "storage": "1",
+      "varName2": "info-msg",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "3",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    },
+    {
+      "storage": "1",
+      "varName": "info-msg",
+      "name": "Delete Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "^ channel check ^",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "pending-infonames",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `name` FROM `infonames`",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var a = tempVars(\"pending-infonames\");\n\nvar arr = []\nb = JSON.parse(a)\nfor (var i in b) {\narr.push(b[i].name)\n};\n\nthis.storeValue(arr, 1, \"pending-infonames\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "list": "7",
+      "varName": "pending-infonames",
+      "start": "`",
+      "middle": "",
+      "end": "`, ",
+      "storage": "1",
+      "varName2": "infonames",
+      "sort": "1",
+      "name": "Convert List to Text"
+    },
+    {
+      "title": "DBM Bot - Commands",
+      "author": "${member.user.username}",
+      "color": "#407cdd",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "${member.user.displayAvatarURL}",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Canned Responses",
+      "message": "Using `!info [name]` you can answer the most asked questions. Example: `!info beta`\nAvailable `[names]:\n${tempVars(\"infonames\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Suggestions",
+      "message": "If you would like to suggest something to be implemented, please use this command:\n`!suggest [your idea]`",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Warnings",
+      "message": "You may get warned by a DBM Moderator if you don't follow our <#345694151607582732>. You can check your current warnings here:\n`!warnings`\n\nA moderator can give you 0-5 points which will be added to your account whenever you get warned.\n4 points => kick\n6 points => ban",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Other Commands",
+      "message": "Due to the [europeean GDPR](https://gdpr-info.eu/) we are required to give you access to all personal information we store. You can request a removal of your data at any time given by messaging a DBM Moderator.\n`!mydata`\n\nThe *DBM Helper* role is for users who know much about DBM. The role can be mentioned every 15 minutes by everyone who needs support. You can remove the role from yourself by using the command again.\n`!helper`\n\nThis bot has been created for the Discord Bot Maker Support Discord using Discord Bot Maker. You can find more information and access to the raw data of this bot using this command:\n`!botinfo`",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "comment": "v Admeen Help v",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "ADMINISTRATOR",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check Member Permissions"
+    },
+    {
+      "title": "Moderator Help",
+      "author": "",
+      "color": "RED",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "`!mute User Minutes`\n`!unmute User`\n`!warn UserID/User Points Evidence`\n`!clearwarns UserID`\n`!prune Amount`\n`!reply SuggestionID Reply`\n`!file ActionFileName`\n`!check ReportID`\n`!approve ReportID Points Reason`\n`!deny ReportID`\n`!mod-stats`\n\n`!info-create [name] [content]`\n`!info-set [name] [name/content/image_link] [new value]` very buggy :(\n`!info-raw [name]`\n`!warnings (user id)`\n`!warning-delete [case id] (reason)`\n`!warning-set [user id] [points] [reason]`",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    }
+  ],
+  "comType": "0",
+  "_aliases": [
+    "h"
+  ]
+}

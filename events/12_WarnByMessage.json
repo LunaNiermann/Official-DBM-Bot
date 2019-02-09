@@ -1,0 +1,250 @@
+{
+  "name": "WarnByMessage",
+  "temp": "reaction",
+  "event-type": "28",
+  "_id": "Faqmq",
+  "actions": [
+    {
+      "storage": "1",
+      "varName": "emoji",
+      "comparison": "1",
+      "value": "'⚠'",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "reaction": "1",
+      "varName": "reaction",
+      "info": "7",
+      "storage": "1",
+      "varName2": "user",
+      "name": "Store Reaction Info"
+    },
+    {
+      "reaction": "1",
+      "varName": "reaction",
+      "info": "3",
+      "storage": "1",
+      "varName2": "emoji",
+      "name": "Store Reaction Info"
+    },
+    {
+      "reaction": "1",
+      "varName": "reaction",
+      "info": "0",
+      "storage": "1",
+      "varName2": "message",
+      "name": "Store Reaction Info"
+    },
+    {
+      "storage": "1",
+      "varName": "reporthash",
+      "min": "1000",
+      "max": "9999",
+      "name": "Generate Random Number"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "1",
+      "iftrueVal": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Server Data"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}",
+      "changeType": "0",
+      "value": "1",
+      "name": "Control Server Data"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}_type",
+      "changeType": "0",
+      "value": "1",
+      "name": "Control Server Data"
+    },
+    {
+      "member": "2",
+      "varName": "user",
+      "dataName": "report_cooldown",
+      "comparison": "1",
+      "value": "1",
+      "iftrue": "1",
+      "iftrueVal": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Member Data"
+    },
+    {
+      "member": "2",
+      "varName": "user",
+      "dataName": "report_cooldown",
+      "changeType": "0",
+      "value": "1",
+      "name": "Control Member Data"
+    },
+    {
+      "comment": "^ check ^",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "message": "1",
+      "varName": "message",
+      "info": "4",
+      "storage": "1",
+      "varName2": "channel",
+      "name": "Store Message Info"
+    },
+    {
+      "channel": "5",
+      "varName": "channel",
+      "message": "⚠ The message has been reported. Thank you for your report ${tempVars(\"user\")}.",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "message": "1",
+      "varName": "message",
+      "info": "3",
+      "storage": "1",
+      "varName2": "author",
+      "name": "Store Message Info"
+    },
+    {
+      "message": "1",
+      "varName": "message",
+      "info": "2",
+      "storage": "1",
+      "varName2": "content",
+      "name": "Store Message Info"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}_url",
+      "changeType": "0",
+      "value": "`https://discordapp.com/channels/335407595890409472/${tempVars(\"channel\").id}/${tempVars(\"message\").id}`",
+      "name": "Control Server Data"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}_userid",
+      "changeType": "0",
+      "value": "tempVars(\"author\").id",
+      "name": "Control Server Data"
+    },
+    {
+      "comment": "^ store ^",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "title": "Message Report",
+      "author": "${tempVars(\"user\").user.username}",
+      "color": "RED",
+      "timestamp": "false",
+      "url": "https://discordapp.com/channels/335407595890409472/${tempVars(\"channel\").id}/${tempVars(\"message\").id}",
+      "authorIcon": "${tempVars(\"user\").user.displayAvatarURL}",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Perpetrator",
+      "message": "${tempVars(\"author\")} (${tempVars(\"author\").user.id})",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Reported by ",
+      "message": "${tempVars(\"user\")} (${tempVars(\"user\").id})",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "content",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "3",
+      "iftrueVal": "1",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "content",
+      "changeType": "0",
+      "value": "\"*Text not available*\"",
+      "name": "Control Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Text",
+      "message": "${tempVars(\"content\")}\n[Link](https://discordapp.com/channels/335407595890409472/${tempVars(\"channel\").id}/${tempVars(\"message\").id})",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "ID: ${tempVars(\"reporthash\")}",
+      "footerIcon": "https://cdn.discordapp.com/emojis/478692305138745344.gif?v=1",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "7",
+      "varName2": "reports-channel",
+      "storage3": "1",
+      "varName3": "staff-embed",
+      "name": "Send Embed Message"
+    },
+    {
+      "time": "15",
+      "measurement": "2",
+      "name": "Wait"
+    },
+    {
+      "member": "2",
+      "varName": "user",
+      "dataName": "report_cooldown",
+      "changeType": "0",
+      "value": "0",
+      "name": "Control Member Data"
+    },
+    {
+      "member": "2",
+      "varName": "user",
+      "permission": "ADMINISTRATOR",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check Member Permissions"
+    }
+  ]
+}

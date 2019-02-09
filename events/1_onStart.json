@@ -1,0 +1,126 @@
+{
+  "name": "onStart",
+  "temp": "",
+  "event-type": "1",
+  "_id": "gjXaV",
+  "actions": [
+    {
+      "behavior": "3",
+      "name": "Run Action Sequence Once"
+    },
+    {
+      "info": "0",
+      "find": "335407595890409472",
+      "storage": "1",
+      "varName": "server",
+      "name": "Find Server"
+    },
+    {
+      "server": "1",
+      "varName": "server",
+      "name": "Change Server"
+    },
+    {
+      "activity": "2",
+      "nameText": "for spammers",
+      "url": "",
+      "stat": "0",
+      "name": "Set Bot Activity"
+    },
+    {
+      "info": "1",
+      "find": "bot-log",
+      "storage": "3",
+      "varName": "bot-log",
+      "name": "Find Channel"
+    },
+    {
+      "info": "1",
+      "find": "warn-log",
+      "storage": "3",
+      "varName": "warn-log",
+      "name": "Find Channel"
+    },
+    {
+      "info": "1",
+      "find": "mod-area",
+      "storage": "3",
+      "varName": "mod-area",
+      "name": "Find Channel"
+    },
+    {
+      "info": "1",
+      "find": "reports",
+      "storage": "3",
+      "varName": "reports-channel",
+      "name": "Find Channel"
+    },
+    {
+      "info": "1",
+      "find": "DBM Helper",
+      "storage": "3",
+      "varName": "helper-role",
+      "name": "Find Role"
+    },
+    {
+      "info": "1",
+      "find": "DBM Expert",
+      "storage": "3",
+      "varName": "expert-role",
+      "name": "Find Role"
+    },
+    {
+      "info": "1",
+      "find": "DBM Mod",
+      "storage": "3",
+      "varName": "mod-role",
+      "name": "Find Role"
+    },
+    {
+      "roleName": "",
+      "hoist": "none",
+      "mentionable": "true",
+      "color": "",
+      "position": "",
+      "storage": "5",
+      "varName": "helper-role",
+      "name": "Edit Role"
+    },
+    {
+      "roleName": "",
+      "hoist": "none",
+      "mentionable": "true",
+      "color": "",
+      "position": "",
+      "storage": "5",
+      "varName": "expert-role",
+      "name": "Edit Role"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "tempVars(\"server\").fetchMembers()",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "client.on('error', (error) => {    \n  if(error.message == 'Unexpected server response: 520'){\n    console.log(\"Cant connect to Discords API, Retrying...\");\n  }else if(error.message == 'read ECONNRESET'){\n    console.log(\"Connection Reset! Reconnecting...\");\n  }else{\n    console.error(error);\n  }            \n});",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "channel": "7",
+      "varName": "bot-log",
+      "message": "*Bot restarted* (case id: ${serverVars(\"case_id\")})",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ]
+}

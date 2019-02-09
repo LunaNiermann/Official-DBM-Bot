@@ -1,0 +1,132 @@
+{
+  "name": "info-raw",
+  "permissions": "ADMINISTRATOR",
+  "restriction": "1",
+  "_id": "PwWkh",
+  "actions": [
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "0",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "😐 `!info-raw [name]`\nDo `!help` in <#407233336335925249> to view all available infos.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "input",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "results-names",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `name` FROM `infonames`",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "0",
+      "name": "Run SQL Query"
+    },
+    {
+      "storage": "1",
+      "varName": "results-names",
+      "comparison": "5",
+      "value": "tempVars(\"input\")",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "😲 Sorry! That info does not exist ¯\\_(ツ)_/¯",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "^ check if info exists ^",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var a = tempVars(\"results-names\");\n\nvar arr = []\nb = JSON.parse(a)\nfor (var i in b) {\narr.push(b[i].name)\n};\n\nthis.storeValue(arr, 1, \"results-names\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "0",
+      "varName": "results",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT * FROM `infonames` WHERE `name` = '${tempVars(\"input\")}';",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "0",
+      "name": "Run SQL Query"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var id = tempVars(\"results\")[0].id;\nvar content = tempVars(\"results\")[0].content;\n\nthis.storeValue(id, 1, \"id\", cache);\nthis.storeValue(content, 1, \"content\", cache);\n",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "Name: ${tempVars(\"input\")}; ID: ${tempVars(\"id\")}\n\n```${tempVars(\"content\")}```",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ],
+  "_aliases": []
+}

@@ -1,0 +1,99 @@
+{
+  "name": "info-set",
+  "permissions": "ADMINISTRATOR",
+  "restriction": "1",
+  "_id": "XHQwZ",
+  "actions": [
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "2",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "😐 `!info-set [name] [name/content/image_link/views] [new value]`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "name",
+      "name": "Store Command Params"
+    },
+    {
+      "info": "0",
+      "infoIndex": "2",
+      "storage": "1",
+      "varName": "toChange",
+      "name": "Store Command Params"
+    },
+    {
+      "info": "1",
+      "infoIndex": "3",
+      "storage": "1",
+      "varName": "newValue",
+      "name": "Store Command Params"
+    },
+    {
+      "text": "${tempVars(\"newValue\")}",
+      "text2": "'",
+      "text3": "",
+      "info": "1",
+      "storage": "1",
+      "varName": "newValue-SQL",
+      "name": "Replace Text"
+    },
+    {
+      "text": "${tempVars(\"newValue-SQL\")}",
+      "text2": "`",
+      "text3": "",
+      "info": "1",
+      "storage": "1",
+      "varName": "newValue-SQL2",
+      "name": "Replace Text"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "result",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "UPDATE `infonames` SET `${tempVars(\"toChange\")}` = `${tempVars(\"newValue-SQL2\")}` WHERE `infonames`.`name` = `${tempVars(\"name\")}`",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "✅ Updated info `${tempVars(\"name\")}`: Set `${tempVars(\"toChange\")}` to `${tempVars(\"newValue\")}`\n\n```${tempVars(\"result\")}```",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ]
+}

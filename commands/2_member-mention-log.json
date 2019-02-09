@@ -1,0 +1,43 @@
+{
+  "name": "member-mention-log",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "PoOtT",
+  "actions": [
+    {
+      "condition": "1",
+      "comparison": "2",
+      "value": "0",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "message": "0",
+      "varName": "",
+      "info": "13",
+      "storage": "1",
+      "varName2": "ment-users",
+      "name": "Store Message Info"
+    },
+    {
+      "message": "0",
+      "varName": "",
+      "info": "14",
+      "storage": "1",
+      "varName2": "ment-count",
+      "name": "Store Message Info"
+    },
+    {
+      "channel": "7",
+      "varName": "bot-log",
+      "message": "`${member.user.username} (${member.user.id})` mentioned ${tempVars(\"ment-count\")} users: ${tempVars(\"ment-users\")} in ${msg.channel}",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    }
+  ],
+  "comType": "3"
+}

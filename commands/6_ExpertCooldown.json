@@ -1,0 +1,73 @@
+{
+  "name": "ExpertCooldown",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "IPCPp",
+  "actions": [
+    {
+      "message": "0",
+      "varName": "",
+      "info": "2",
+      "storage": "1",
+      "varName2": "text",
+      "name": "Store Message Info"
+    },
+    {
+      "storage": "1",
+      "varName": "text",
+      "comparison": "5",
+      "value": "globalVars(\"expert-role\")",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "roleName": "",
+      "hoist": "none",
+      "mentionable": "false",
+      "color": "",
+      "position": "",
+      "storage": "5",
+      "varName": "expert-role",
+      "name": "Edit Role"
+    },
+    {
+      "channel": "7",
+      "varName": "bot-log",
+      "message": "*Experts can take a break rn.*",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "90",
+      "measurement": "2",
+      "name": "Wait"
+    },
+    {
+      "roleName": "",
+      "hoist": "none",
+      "mentionable": "true",
+      "color": "",
+      "position": "",
+      "storage": "5",
+      "varName": "expert-role",
+      "name": "Edit Role"
+    },
+    {
+      "channel": "7",
+      "varName": "bot-log",
+      "message": "*Back to work Experts!*",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ],
+  "comType": "3"
+}

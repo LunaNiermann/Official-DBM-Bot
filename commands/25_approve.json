@@ -1,0 +1,227 @@
+{
+  "name": "approve",
+  "permissions": "ADMINISTRATOR",
+  "restriction": "1",
+  "_id": "NAxBR",
+  "actions": [
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "2",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "You can warn a user using this after a message has been reported.\n`!approve Message-/ReportID Points Reason`",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "reporthash",
+      "name": "Store Command Params"
+    },
+    {
+      "info": "0",
+      "infoIndex": "2",
+      "storage": "1",
+      "varName": "points",
+      "name": "Store Command Params"
+    },
+    {
+      "info": "1",
+      "infoIndex": "3",
+      "storage": "1",
+      "varName": "reason-raw",
+      "name": "Store Command Params"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}",
+      "comparison": "1",
+      "value": "1",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Server Data"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "❔ There is no pending report with the ID `${tempVars(\"reporthash\")}`.",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}_type",
+      "comparison": "1",
+      "value": "1",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Server Data"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "😵 Oopsie! Please warn the user! This is a manual report :)",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}_userid",
+      "defaultVal": "0",
+      "storage": "1",
+      "varName2": "userid",
+      "name": "Store Server Data"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"userid\")}",
+      "storage": "1",
+      "varName": "user",
+      "name": "Find Member"
+    },
+    {
+      "storage": "1",
+      "varName": "user",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "💥 The user is not in this server...",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}",
+      "changeType": "0",
+      "value": "3",
+      "name": "Control Server Data"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}_url",
+      "defaultVal": "0",
+      "storage": "1",
+      "varName2": "url",
+      "name": "Store Server Data"
+    },
+    {
+      "storage": "1",
+      "varName": "reason",
+      "changeType": "0",
+      "value": "tempVars(\"reason-raw\")+\" Evidence: \"+tempVars(\"url\")",
+      "name": "Control Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "✅ Warning issued. ",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "channel": "7",
+      "varName": "reports-channel",
+      "message": "${member} **approved** report **${tempVars(\"reporthash\")}**.",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "member": "2",
+      "varName": "user",
+      "dataName": "warning_points",
+      "changeType": "1",
+      "value": "parseInt(tempVars(\"points\"))",
+      "name": "Control Member Data"
+    },
+    {
+      "member": "2",
+      "varName": "user",
+      "dataName": "warning_points",
+      "comparison": "4",
+      "value": "4",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Member Data"
+    },
+    {
+      "source": "ban",
+      "type": "true",
+      "name": "Call Command/Event"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "member": "2",
+      "varName": "user",
+      "dataName": "warning_points",
+      "comparison": "4",
+      "value": "3",
+      "iftrue": "0",
+      "iftrueVal": "2",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Member Data"
+    },
+    {
+      "source": "kick",
+      "type": "true",
+      "name": "Call Command/Event"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "source": "warn",
+      "type": "true",
+      "name": "Call Command/Event"
+    }
+  ]
+}

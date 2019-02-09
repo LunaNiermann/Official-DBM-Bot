@@ -1,0 +1,85 @@
+{
+  "name": "botinfo",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "VrZCk",
+  "actions": [
+    {
+      "info": "5",
+      "storage": "1",
+      "varName2": "ping",
+      "name": "Store Bot Client Info"
+    },
+    {
+      "info": "23",
+      "storage": "1",
+      "varName2": "udays",
+      "name": "Store Bot Client Info"
+    },
+    {
+      "info": "24",
+      "storage": "1",
+      "varName2": "uhours",
+      "name": "Store Bot Client Info"
+    },
+    {
+      "info": "25",
+      "storage": "1",
+      "varName2": "umins",
+      "name": "Store Bot Client Info"
+    },
+    {
+      "info": "26",
+      "storage": "1",
+      "varName2": "usecs",
+      "name": "Store Bot Client Info"
+    },
+    {
+      "title": "Bot Information",
+      "author": "${member.user.username}",
+      "color": "",
+      "timestamp": "true",
+      "url": "",
+      "authorIcon": "${member.user.displayAvatarURL}",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Ping",
+      "message": "${tempVars(\"ping\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Uptime",
+      "message": "${tempVars(\"udays\")} days, ${tempVars(\"uhours\")} hours, ${tempVars(\"umins\")} minutes, ${tempVars(\"usecs\")} seconds",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Total Members",
+      "message": "${msg.guild.memberCount}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    }
+  ],
+  "comType": "0"
+}

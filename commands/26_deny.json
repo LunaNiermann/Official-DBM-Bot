@@ -1,0 +1,106 @@
+{
+  "name": "deny",
+  "permissions": "ADMINISTRATOR",
+  "restriction": "1",
+  "_id": "riKyb",
+  "actions": [
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "❔ This command denies a report. \n`!deny ReportID`",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "reporthash",
+      "name": "Store Command Params"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Server Data"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "❔ The message with the ID `${tempVars(\"reporthash\")}` hasn't been reported.",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}_type",
+      "comparison": "1",
+      "value": "1",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Server Data"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "😵 Oopsie! Please warn the user! This is a manual report :)",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "report_${tempVars(\"reporthash\")}",
+      "changeType": "0",
+      "value": "2",
+      "name": "Control Server Data"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "✅ Report `${tempVars(\"reporthash\")}` has been denied.",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "channel": "7",
+      "varName": "reports-channel",
+      "message": "${member} **denied** report **${tempVars(\"reporthash\")}**.",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "name": "mod-stats",
+  "permissions": "ADMINISTRATOR",
+  "restriction": "1",
+  "_id": "QwljY",
+  "actions": [
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "query-result",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT moderator_id, count(*) as c FROM warnings GROUP BY moderator_id\n\n",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var a = tempVars(\"query-result\");\n\nvar arr = []\nb = JSON.parse(a)\nfor (var i in b) {\narr.push(\"<@\" + b[i].moderator_id + \">: \" + b[i].c)\n};\n\nthis.storeValue(arr, 1, \"pending-result\", cache);\n\nmsg.guild.fetchBans()\n  .then(bans => this.storeValue(bans.size, 1, \"totalbans\", cache))\n  .catch(console.error);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "list": "7",
+      "varName": "pending-result",
+      "start": "",
+      "middle": "",
+      "end": "\\n",
+      "storage": "1",
+      "varName2": "result",
+      "sort": "1",
+      "name": "Convert List to Text"
+    },
+    {
+      "text": "${tempVars(\"result\")}",
+      "text2": "<@null>",
+      "text3": "Not defined",
+      "info": "0",
+      "storage": "1",
+      "varName": "result-ready",
+      "name": "Replace Text"
+    },
+    {
+      "title": "Moderator Stats",
+      "author": "",
+      "color": "#1ABC9C",
+      "timestamp": "true",
+      "url": "",
+      "authorIcon": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "**Warnings:**\n${tempVars(\"result-ready\")}\n\n**Total members:** ${msg.guild.memberCount}\n**Total bans:** ${tempVars(\"totalbans\")}\n\n\nThe less warnings the better we manage this guild 😕",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "1",
+      "varName3": "res",
+      "name": "Send Embed Message"
+    },
+    {
+      "time": "2",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "title": "Moderator Stats",
+      "author": "",
+      "color": "#1ABC9C",
+      "timestamp": "true",
+      "url": "",
+      "authorIcon": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "new-embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "new-embed",
+      "message": "**Warnings:**\n${tempVars(\"result-ready\")}\n\n**Total members:** ${msg.guild.memberCount}\n**Total bans:** ${tempVars(\"totalbans\")}\n\n\nThe less warnings the better we manage this guild 😕",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "res",
+      "storage2": "1",
+      "varName2": "new-embed",
+      "name": "Edit Embed"
+    }
+  ],
+  "comType": "0",
+  "_aliases": [
+    "warns"
+  ]
+}

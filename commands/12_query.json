@@ -1,0 +1,44 @@
+{
+  "name": "query",
+  "permissions": "NONE",
+  "restriction": "4",
+  "_id": "IeIJo",
+  "actions": [
+    {
+      "info": "1",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "input",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "output",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "${tempVars(\"input\")}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "${tempVars(\"output\")}",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ]
+}

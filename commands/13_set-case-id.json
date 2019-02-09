@@ -1,0 +1,37 @@
+{
+  "name": "set-case-id",
+  "permissions": "NONE",
+  "restriction": "4",
+  "_id": "sjFCt",
+  "actions": [
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "input",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "2",
+      "varName": "case_id",
+      "changeType": "0",
+      "value": "parseInt(tempVars(\"input\"))",
+      "name": "Control Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "case id set to `${serverVars(\"case_id\")}`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "2",
+      "varName": "case_id",
+      "name": "Save Variable"
+    }
+  ]
+}
