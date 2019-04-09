@@ -1,0 +1,58 @@
+{
+  "name": "hoistscan",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "ezbef",
+  "actions": [
+    {
+      "member": "1",
+      "varName": "",
+      "role": "5",
+      "varName2": "expert-role",
+      "iftrue": "3",
+      "iftrueVal": "1",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If Member has Role"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "role": "5",
+      "varName2": "mod-role",
+      "iftrue": "0",
+      "iftrueVal": "1",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check If Member has Role"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "msg.guild.fetchMembers();\nmsg.guild.members.forEach(async member => {\n  const nick = member.displayName.replace(/^[^a-zA-Z]+/gi, '') || 'User'\n  if (nick !== member.displayName) await member.setNickname(nick, 'Auto dehoist (command)')\n});",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "✅",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "channel": "7",
+      "varName": "bot-log",
+      "message": "*${member} scanned server for hoisters.*",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ]
+}

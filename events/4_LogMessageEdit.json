@@ -55,7 +55,7 @@
     {
       "storage": "1",
       "varName": "embed",
-      "message": "[Beam me up, Scotty](https://canary.discordapp.com/channels/335407595890409472/${tempVars(\"newmsg\").channel.id}/${tempVars(\"newmsg\").id})",
+      "message": "[Beam me up, Scotty](https://discordapp.com/channels/335407595890409472/${tempVars(\"newmsg\").channel.id}/${tempVars(\"newmsg\").id})",
       "name": "Set Embed Description"
     },
     {

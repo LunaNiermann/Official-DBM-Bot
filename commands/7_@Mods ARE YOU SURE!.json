@@ -46,7 +46,7 @@
     {
       "storage": "1",
       "varName": "embed",
-      "message": "I really hope for you that you didn't ask for help regarding DBM...\n\"${tempVars(\"role\")}\" should be *only* used in case of a raid or a similar *moderation-related emergency*.\n\nHowever, the police should be here in a few seconds. `¯\\_(ツ)_/¯`",
+      "message": "/shrug I really hope for you that you didn't ask for help regarding DBM...\n\"${tempVars(\"role\")}\" should be *only* used in case of a raid or a similar *moderation-related emergency*.\n\nHowever, the police should be here in a few seconds. ",
       "name": "Set Embed Description"
     },
     {

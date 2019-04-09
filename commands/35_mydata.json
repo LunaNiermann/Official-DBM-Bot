@@ -1,0 +1,49 @@
+{
+  "name": "mydata",
+  "permissions": "NONE",
+  "restriction": "0",
+  "_id": "zDESL",
+  "actions": [
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":floppy_disk: I will send you a DM with all personal information we stored about you in our database.",
+      "storage": "1",
+      "varName2": "status",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "data",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT * FROM `warnings` WHERE `user_id` = ${member.user.id}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "0",
+      "name": "Run SQL Query"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "member.send(\"<a:loading:439082601211494412> We saved the following information about you:```\"+ tempVars(\"data\") +\"```\").catch(() => tempVars(\"status\").edit(\"Please enable your DMs! Right click the server icon -> Privacy Setting: Allow DMs from Server Members\"))",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    }
+  ],
+  "_aliases": [
+    "whatdidyousavefromme"
+  ],
+  "comType": "0"
+}

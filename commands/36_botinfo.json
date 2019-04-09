@@ -37,7 +37,7 @@
     {
       "title": "Bot Information",
       "author": "${member.user.username}",
-      "color": "",
+      "color": "#2ecc71",
       "timestamp": "true",
       "url": "",
       "authorIcon": "${member.user.displayAvatarURL}",
@@ -46,6 +46,12 @@
       "storage": "1",
       "varName": "embed",
       "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "The bot is maintained by <@268737698397814784>.\nAll commands and events are available [here](https://github.com/LasseNiermann/Official-DBM-Bot).\n\nFeel free to suggest things using `!suggest` or DM <@268737698397814784>.",
+      "name": "Set Embed Description"
     },
     {
       "storage": "1",

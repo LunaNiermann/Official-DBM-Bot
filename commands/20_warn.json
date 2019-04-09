@@ -9,7 +9,7 @@
       "comparison": "2",
       "value": "2",
       "iftrue": "3",
-      "iftrueVal": "3",
+      "iftrueVal": "2",
       "iffalse": "0",
       "iffalseVal": "17",
       "name": "Check Parameters"
@@ -21,9 +21,6 @@
       "storage": "0",
       "varName2": "",
       "name": "Send Message"
-    },
-    {
-      "name": "End Action Sequence"
     },
     {
       "name": "End Action Sequence"
@@ -68,15 +65,8 @@
       "name": "Store Member Info"
     },
     {
-      "storage": "1",
-      "varName": "bla",
-      "comparison": "0",
-      "value": "",
-      "iftrue": "3",
-      "iftrueVal": "2",
-      "iffalse": "3",
-      "iffalseVal": "2",
-      "name": "Check Variable"
+      "count": "2",
+      "name": "Skip Actions"
     },
     {
       "behavior": "0",
@@ -107,13 +97,17 @@
     {
       "channel": "0",
       "varName": "",
-      "message": "😒 Something went wrong...\nI can't find that user!",
+      "message": "*Manual warning. User is not here.*",
       "storage": "0",
       "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
       "name": "Send Message"
     },
     {
-      "name": "End Action Sequence"
+      "source": "nnIbt",
+      "type": "true",
+      "name": "Call Command/Event"
     },
     {
       "name": "End Action Sequence"
@@ -164,6 +158,11 @@
       "name": "Run SQL Query"
     },
     {
+      "source": "KOifU",
+      "type": "false",
+      "name": "Call Command/Event"
+    },
+    {
       "channel": "0",
       "varName": "",
       "message": "✅ ***${tempVars(\"user\").user.tag} has been warned (Case #${serverVars(\"case_id\")})***",
@@ -174,63 +173,47 @@
       "name": "Send Message"
     },
     {
-      "member": "2",
-      "varName": "user",
-      "dataName": "warning_points",
-      "changeType": "1",
-      "value": "${tempVars(\"points\")}",
-      "name": "Control Member Data"
-    },
-    {
-      "member": "2",
-      "varName": "user",
-      "dataName": "warning_reason",
-      "comparison": "0",
-      "value": "",
-      "iftrue": "3",
-      "iftrueVal": "2",
-      "iffalse": "0",
-      "iffalseVal": "2",
-      "name": "Check Member Data"
-    },
-    {
-      "member": "2",
-      "varName": "user",
-      "dataName": "warning_reason",
-      "changeType": "0",
-      "value": "tempVars(\"reason\")",
-      "name": "Control Member Data"
+      "comment": "v Evaluate punishment v ",
+      "color": "#000000",
+      "name": "Comment"
     },
     {
       "storage": "1",
-      "varName": "Does",
-      "comparison": "0",
-      "value": "",
-      "iftrue": "3",
-      "iftrueVal": "1",
-      "iffalse": "3",
-      "iffalseVal": "1",
-      "name": "Check Variable"
+      "stringifyOutput": "0",
+      "varName": "pending-totalpoints",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT `user_id`, SUM(points) AS `points` FROM `warnings` WHERE `user_id` = ${tempVars(\"user\").user.id}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "0",
+      "name": "Run SQL Query"
     },
     {
-      "member": "2",
-      "varName": "user",
-      "dataName": "warning_reason",
-      "changeType": "1",
-      "value": "`, ` + tempVars(\"reason\")",
-      "name": "Control Member Data"
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "var points = tempVars(\"pending-totalpoints\")[0].points;\nconsole.log(points);\n\nif(points !== null && typeof points !== \"object\") {\nthis.storeValue(points, 1, \"totalpoints\", cache);\n} else {\nthis.storeValue(\"0\", 1, \"totalpoints\", cache);\n}",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
     },
     {
-      "member": "2",
-      "varName": "user",
-      "dataName": "warning_points",
+      "storage": "1",
+      "varName": "totalpoints",
       "comparison": "4",
       "value": "4",
       "iftrue": "0",
       "iftrueVal": "",
       "iffalse": "3",
-      "iffalseVal": "3",
-      "name": "Check Member Data"
+      "iffalseVal": "2",
+      "name": "Check Variable"
     },
     {
       "source": "ban",
@@ -241,27 +224,20 @@
       "name": "End Action Sequence"
     },
     {
-      "name": "End Action Sequence"
-    },
-    {
-      "member": "2",
-      "varName": "user",
-      "dataName": "warning_points",
+      "storage": "1",
+      "varName": "totalpoints",
       "comparison": "4",
       "value": "3",
       "iftrue": "0",
-      "iftrueVal": "2",
+      "iftrueVal": "",
       "iffalse": "3",
-      "iffalseVal": "3",
-      "name": "Check Member Data"
+      "iffalseVal": "2",
+      "name": "Check Variable"
     },
     {
       "source": "kick",
       "type": "true",
       "name": "Call Command/Event"
-    },
-    {
-      "name": "End Action Sequence"
     },
     {
       "name": "End Action Sequence"

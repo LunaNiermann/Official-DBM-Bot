@@ -136,7 +136,7 @@
       "storage": "1",
       "varName": "embed",
       "fieldName": "Canned Responses",
-      "message": "Using `!info [name]` you can answer the most asked questions. Example: `!info beta`\nAvailable `[names]:\n${tempVars(\"infonames\")}",
+      "message": "Using `!info [name]` you can answer the most asked questions. Example: `!info beta`\nAvailable `[names]`:\n${tempVars(\"infonames\")}",
       "inline": "1",
       "name": "Add Embed Field"
     },
@@ -152,7 +152,7 @@
       "storage": "1",
       "varName": "embed",
       "fieldName": "Warnings",
-      "message": "You may get warned by a DBM Moderator if you don't follow our <#345694151607582732>. You can check your current warnings here:\n`!warnings`\n\nA moderator can give you 0-5 points which will be added to your account whenever you get warned.\n4 points => kick\n6 points => ban",
+      "message": "You may get warned by a DBM Moderator if you don't follow our <#345694151607582732>. You can check your current warnings here:\n`!warnings`\n\nA moderator can give you 0-5 points which will be added to your account whenever you get warned.\n4 points => kick\n5 points => ban",
       "inline": "1",
       "name": "Add Embed Field"
     },
@@ -204,7 +204,7 @@
     {
       "storage": "1",
       "varName": "embed",
-      "message": "`!mute User Minutes`\n`!unmute User`\n`!warn UserID/User Points Evidence`\n`!clearwarns UserID`\n`!prune Amount`\n`!reply SuggestionID Reply`\n`!file ActionFileName`\n`!check ReportID`\n`!approve ReportID Points Reason`\n`!deny ReportID`\n`!mod-stats`\n\n`!info-create [name] [content]`\n`!info-set [name] [name/content/image_link] [new value]` very buggy :(\n`!info-raw [name]`\n`!warnings (user id)`\n`!warning-delete [case id] (reason)`\n`!warning-set [user id] [points] [reason]`",
+      "message": "`!mute [@user] [Minutes]`\n`!unmute [@user]`\n`!warn [user id/@user] [Points] [(Evidence)]`\n`!prune [Amount]`\n`!reply [SuggestionID] [Reply]`\n`!file [ActionFileName]`\n`!mod-stats`\n`!nick [user id] [nickname]`\n`!hoistscan`\n\n`!info-create [name] [content]`\n`!info-set [name] [name/content/image_link] [new value]` very buggy :(\n`!info-raw [name]`\n`!warnings (user id)`\n`!warning-delete [case id] (reason)`",
       "name": "Set Embed Description"
     },
     {

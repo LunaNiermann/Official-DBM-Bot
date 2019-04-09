@@ -145,6 +145,16 @@
       "varName2": ":tools:",
       "varName3": "tools_emoji",
       "name": "Add Reaction"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "✅ Your suggestion has been submitted!",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
     }
   ],
   "comType": "0",

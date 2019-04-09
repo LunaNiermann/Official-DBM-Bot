@@ -5,15 +5,6 @@
   "_id": "warn",
   "actions": [
     {
-      "member": "2",
-      "varName": "user",
-      "dataName": "warning_points",
-      "defaultVal": "0",
-      "storage": "1",
-      "varName2": "user_warning_points",
-      "name": "Store Member Data"
-    },
-    {
       "title": "Warning - ${tempVars(\"user\").user.tag} - Case #${serverVars(\"case_id\")}",
       "author": "",
       "color": "018dbc",
@@ -46,7 +37,7 @@
       "storage": "1",
       "varName": "embed",
       "fieldName": "Total Points",
-      "message": "${tempVars(\"user_warning_points\")}",
+      "message": "${tempVars(\"totalpoints\")}",
       "inline": "0",
       "name": "Add Embed Field"
     },
@@ -136,7 +127,7 @@
       "storage": "1",
       "varName": "player-embed",
       "fieldName": "Total Points",
-      "message": "${tempVars(\"user_warning_points\")}",
+      "message": "${tempVars(\"totalpoints\")}",
       "inline": "0",
       "name": "Add Embed Field"
     },

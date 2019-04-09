@@ -57,6 +57,13 @@
     },
     {
       "info": "1",
+      "find": "join-log",
+      "storage": "3",
+      "varName": "join-log",
+      "name": "Find Channel"
+    },
+    {
+      "info": "1",
       "find": "DBM Helper",
       "storage": "3",
       "varName": "helper-role",
@@ -108,6 +115,22 @@
       "behavior": "0",
       "interpretation": "0",
       "code": "client.on('error', (error) => {    \n  if(error.message == 'Unexpected server response: 520'){\n    console.log(\"Cant connect to Discords API, Retrying...\");\n  }else if(error.message == 'read ECONNRESET'){\n    console.log(\"Connection Reset! Reconnecting...\");\n  }else{\n    console.error(error);\n  }            \n});",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "client.on('userUpdate', async function (oldUser, newUser) {\n  if (oldUser.displayName !== newUser.displayName) {\n    const nick = newUser.displayName.replace(/^[^a-zA-Z]+/gi, '')\n    if (nick !== newUser.displayName) await newUser.setNickname(nick || 'hoister', 'Auto dehoist')\n  }\n})",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "client.on('guildMemberAdd', async function (member) { \n  const nick = member.displayName.replace(/^[^a-zA-Z]+/gi, '')\n    if (nick !== member.displayName) {\n      await member.setNickname(nick || 'hoister', 'Auto dehoist (join)')\n    }\n})",
       "storage": "0",
       "varName": "",
       "name": "Run Script"

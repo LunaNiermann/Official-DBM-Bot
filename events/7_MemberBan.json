@@ -5,15 +5,6 @@
   "_id": "ban",
   "actions": [
     {
-      "member": "2",
-      "varName": "user",
-      "dataName": "warning_points",
-      "defaultVal": "0",
-      "storage": "1",
-      "varName2": "user_warning_points",
-      "name": "Store Member Data"
-    },
-    {
       "title": "Ban - ${tempVars(\"user\").user.tag} - Case #${serverVars(\"case_id\")}",
       "author": "",
       "color": "ff0000",
@@ -46,7 +37,7 @@
       "storage": "1",
       "varName": "embed",
       "fieldName": "Total Points",
-      "message": "${tempVars(\"user_warning_points\")}",
+      "message": "${tempVars(\"totalpoints\")}",
       "inline": "0",
       "name": "Add Embed Field"
     },
@@ -77,7 +68,7 @@
     {
       "behavior": "0",
       "interpretation": "0",
-      "code": "tempVars(\"user\").send(`**Hey ${tempVars(\"user\").user.tag}!** - Case #${serverVars(\"case_id\")}\nYou just got banned from the Discord Bot Maker server with the reason:\n`*${tempVars(\"reason\")}*`\nYou recieved ${tempVars(\"points\")} new warning point(s).\nIf you think that this action was wrong, contact ${member.user.tag}.\nBut please respect the Moderator!\nYou may appeal at https://dbm-support.site/index.php?a=add&category=8&custom4=${tempVars(\"member\").user.id}&custom5=${serverVars(\"case_id\")}`).catch(() => msg.channel.send(\"Banned user. and btw, they blocked their DMs.\"))",
+      "code": "tempVars(\"user\").send(`**Hey ${tempVars(\"user\").user.tag}!** - Case #${serverVars(\"case_id\")}\nYou just got banned from the Discord Bot Maker server with the reason:\n`*${tempVars(\"reason\")}*`\nYou recieved ${tempVars(\"points\")} new warning point(s) (${tempVars(\"totalpoints\")} points in total).\n\nIf you don't agree with this punishment, you may appeal at https://dbm-support.site/index.php?a=add&category=8&custom4=${tempVars(\"member\").user.id}&custom5=${serverVars(\"case_id\")}`).catch(() => msg.channel.send(\"Banned user. and btw, they blocked their DMs.\"))",
       "storage": "0",
       "varName": "",
       "name": "Run Script"

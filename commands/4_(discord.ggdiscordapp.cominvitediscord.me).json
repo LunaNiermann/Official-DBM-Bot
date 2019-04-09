@@ -87,6 +87,16 @@
       "name": "Send Embed Message"
     },
     {
+      "channel": "7",
+      "varName": "mod-area",
+      "message": "${tempVars(\"text\")}",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
       "channel": "0",
       "varName": "",
       "message": "***${member} Discord links aren't allowed here!***",
