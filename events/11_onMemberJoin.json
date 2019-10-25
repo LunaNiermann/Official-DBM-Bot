@@ -13,44 +13,6 @@
       "name": "Run Script"
     },
     {
-      "comment": "v Global ban check v ",
-      "color": "#000000",
-      "name": "Comment"
-    },
-    {
-      "token": "",
-      "user": "",
-      "pass": "",
-      "url": "https://api.ksoft.si/bans/check?user=${tempVars(\"mem\").id}&Authorization=XXXXXXXXXXX",
-      "path": "$.is_banned",
-      "storage": "1",
-      "varName": "globalban-status",
-      "debugMode": "0",
-      "headers": "",
-      "name": "Store Json From WebAPI"
-    },
-    {
-      "storage": "1",
-      "varName": "globalban-status",
-      "comparison": "1",
-      "value": "true",
-      "iftrue": "0",
-      "iftrueVal": "",
-      "iffalse": "3",
-      "iffalseVal": "1",
-      "name": "Check Variable"
-    },
-    {
-      "channel": "7",
-      "varName": "join-log",
-      "message": "<@268737698397814784>: ${tempVars(\"mem\")} is banned globally from KSoft.SI API.",
-      "storage": "0",
-      "varName2": "",
-      "iffalse": "0",
-      "iffalseVal": "",
-      "name": "Send Message"
-    },
-    {
       "comment": "v Ban check v",
       "color": "#000000",
       "name": "Comment"

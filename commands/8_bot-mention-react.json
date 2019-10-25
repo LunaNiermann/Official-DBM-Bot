@@ -41,13 +41,43 @@
       "name": "Check Variable"
     },
     {
+      "storage": "1",
+      "varName": "num",
+      "min": "1",
+      "max": "2",
+      "name": "Generate Random Number"
+    },
+    {
+      "storage": "1",
+      "varName": "num",
+      "comparison": "1",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
       "channel": "0",
       "varName": "channel",
       "message": "<a:a_ping_socktag_mention:409471182971076618>",
       "storage": "0",
       "varName2": "",
       "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "channel": "0",
+      "varName": "channel",
+      "message": "<:sigh:514136831793823756>",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
     }
   ],
-  "comType": "3"
+  "comType": "3",
+  "_timeRestriction": 60
 }

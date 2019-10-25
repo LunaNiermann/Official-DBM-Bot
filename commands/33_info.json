@@ -5,6 +5,25 @@
   "_id": "MnoAE",
   "actions": [
     {
+      "channel": "0",
+      "varName": "",
+      "info": "1",
+      "storage": "1",
+      "varName2": "channelid",
+      "name": "Store Channel Info"
+    },
+    {
+      "storage": "1",
+      "varName": "channelid",
+      "comparison": "1",
+      "value": "335407595890409472",
+      "iftrue": "1",
+      "iftrueVal": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
       "condition": "0",
       "comparison": "2",
       "value": "0",

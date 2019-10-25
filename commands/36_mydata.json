@@ -36,7 +36,7 @@
     {
       "behavior": "0",
       "interpretation": "0",
-      "code": "member.send(\"<a:loading:439082601211494412> We saved the following information about you:```\"+ tempVars(\"data\") +\"```\").catch(() => tempVars(\"status\").edit(\"Please enable your DMs! Right click the server icon -> Privacy Setting: Allow DMs from Server Members\"))",
+      "code": "if(tempVars(\"data\") == '[]')\n{\n    member.send(\"We do not store any information about this account in our database\").catch(() => tempVars(\"status\").edit(\"Please enable your DMs! Right click the server icon -> Privacy Setting: Allow DMs from Server Members\"));\n}\nelse\n{\n    member.send(\"We saved the following information about you:```\"+ tempVars(\"data\") +\"```\").catch(() => tempVars(\"status\").edit(\"Please enable your DMs! Right click the server icon -> Privacy Setting: Allow DMs from Server Members\"));\n}",
       "storage": "0",
       "varName": "",
       "name": "Run Script"

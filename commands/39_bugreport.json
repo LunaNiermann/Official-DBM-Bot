@@ -1,0 +1,116 @@
+{
+  "name": "bugreport",
+  "permissions": "ADMINISTRATOR",
+  "restriction": "1",
+  "_id": "XHQwA",
+  "actions": [
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "4",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "Hey!\nIf you found a bug witin Discord Bot Maker it would be great if you could tell us more about it!\nPlease use the following command to submit your bug report:\n\n**Important:** Please include the following information:\n- Beta / Default version?\n- What does your console / bot log tell you? \n(Please make sure to report DBM Mods related bugs in their DBM Network server!)\n\n`!bugreport <all info here>` (min. 5 words)",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "info": "1",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "desc",
+      "name": "Store Command Params"
+    },
+    {
+      "changeType": "1",
+      "value": "1",
+      "storage": "2",
+      "varName": "bug_id",
+      "name": "Control Variable"
+    },
+    {
+      "storage": "2",
+      "varName": "bug_id",
+      "name": "Save Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "✅ Bug report ${serverVars(\"bug_id\")} was submitted and will now be reviewed by staff.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "title": "PENDING",
+      "author": "${member.user.username}",
+      "color": "FFA500",
+      "timestamp": "true",
+      "url": "",
+      "authorIcon": "${member.user.displayAvatarURL}",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "${tempVars(\"desc\")}",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "ID: ${serverVars(\"bug_id\")}",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "7",
+      "varName2": "bug-report-queue",
+      "storage3": "1",
+      "varName3": "embed-msg",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "1",
+      "varName": "result",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "INSERT INTO bugs (bug_id, reporter_id, description, status, queue_msg_id)\nVALUES (${serverVars(\"bug_id\")}, ${member.user.id}, \"${tempVars(\"desc\")}\", 0, ${tempVars(\"embed-msg\").id});",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    }
+  ]
+}

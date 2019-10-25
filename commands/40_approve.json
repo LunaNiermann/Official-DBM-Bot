@@ -1,0 +1,199 @@
+{
+  "name": "approve",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "dGWyK",
+  "actions": [
+    {
+      "member": "1",
+      "varName": "",
+      "role": "5",
+      "varName2": "expert-role",
+      "iftrue": "3",
+      "iftrueVal": "1",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If Member has Role"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "role": "5",
+      "varName2": "mod-role",
+      "iftrue": "0",
+      "iftrueVal": "1",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check If Member has Role"
+    },
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "`!approve <ID>`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "id",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "1",
+      "stringifyOutput": "0",
+      "varName": "res",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "SELECT * FROM `bugs` WHERE `bug_id` = ${tempVars(\"id\")}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "behavior": "1",
+      "interpretation": "0",
+      "code": "if(tempVars(\"res\")[0].status == 0)\n{\nthis.callNextAction(cache);\n}\nelse\n{\nmsg.channel.send(\"There is no pending bug report with that ID.\");\n}",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "globalVars(\"bug-report-queue\").fetchMessage(tempVars(\"res\")[0].queue_msg_id)\n.then(message => message.delete())",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"res\")[0].reporter_id}",
+      "storage": "1",
+      "varName": "reporter",
+      "name": "Find Member"
+    },
+    {
+      "title": "",
+      "author": "${tempVars(\"reporter\").user.username}",
+      "color": "#2DD07B",
+      "timestamp": "true",
+      "url": "",
+      "authorIcon": "${tempVars(\"reporter\").user.displayAvatarURL}",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "${tempVars(\"res\")[0].description}",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "ID: ${tempVars(\"id\")}",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "7",
+      "varName2": "bug-reports",
+      "storage3": "1",
+      "varName3": "embed-msg",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "channel": "5",
+      "varName": "reporter",
+      "message": "Hey ${tempVars(\"reporter\").user.tag},\nWe are glad to tell you that your bug report (${tempVars(\"id\")}) has been approved by a staff member and is now public. \n\nThank you for your contribution!",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "0",
+      "stringifyOutput": "0",
+      "varName": "",
+      "hostname": "",
+      "port": "",
+      "username": "",
+      "password": "",
+      "database": "",
+      "query": "UPDATE bugs\nSET status = 1, channel_msg_id = '${tempVars(\"embed-msg\").id}' WHERE bug_id = ${tempVars(\"id\")}",
+      "path": "",
+      "otype": "0",
+      "source_conn_storage": "3",
+      "source_conn_varName": "database-connection",
+      "store_source_conn_storage": "0",
+      "store_source_conn_varName": "",
+      "debugMode": "1",
+      "name": "Run SQL Query"
+    },
+    {
+      "channel": "7",
+      "varName": "bot-log",
+      "message": "${member.user.username} approved bug report ${tempVars(\"id\")}",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed-msg",
+      "emoji": "4",
+      "varName2": "➕",
+      "varName3": "",
+      "name": "Add Reaction"
+    },
+    {
+      "storage": "1",
+      "varName": "embed-msg",
+      "emoji": "4",
+      "varName2": "➖",
+      "varName3": "",
+      "name": "Add Reaction"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    }
+  ]
+}

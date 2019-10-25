@@ -87,6 +87,17 @@
       "name": "Send Embed Message"
     },
     {
+      "storage": "1",
+      "varName": "text",
+      "comparison": "6",
+      "value": "(@everyone|@here|<@)",
+      "iftrue": "3",
+      "iftrueVal": "1",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
       "channel": "7",
       "varName": "mod-area",
       "message": "${tempVars(\"text\")}",
@@ -94,6 +105,14 @@
       "varName2": "",
       "iffalse": "0",
       "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "channel": "7",
+      "varName": "mod-area",
+      "message": "${member.user.id}",
+      "storage": "0",
+      "varName2": "",
       "name": "Send Message"
     },
     {

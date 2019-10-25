@@ -1,0 +1,157 @@
+{
+  "name": "faq",
+  "permissions": "ADMINISTRATOR",
+  "restriction": "1",
+  "_id": "tsvse",
+  "actions": [
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    },
+    {
+      "channel": "0",
+      "count": "15",
+      "condition": "0",
+      "custom": "",
+      "varName": "",
+      "name": "Delete Bulk Messages"
+    },
+    {
+      "title": "Welcome to the Discord Bot Maker Discord!",
+      "author": "Discord Bot Maker",
+      "color": "#42ba93",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "https://cdn.discordapp.com/icons/335407595890409472/780b61c6801218e6225bd84db543ebe6.webp",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed1",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed1",
+      "message": "Discord Bot Maker (DBM) is a software to create a Discord bot using an user interface. You do not need to learn coding but you need basic knowledge on how to use a computer and Discord. \n\n[Website](https://dbotmaker.io/)\n[Purchase on Steam](https://store.steampowered.com/app/682130/Discord_Bot_Maker/)\n[Forum](https://dbotmaker.io/forums/)\n[Documentation](https://silversunset.net/dbm/)\n[Video Tutorials](https://www.youtube.com/DiscordBotMaker)\n\nOfficial invite link to this Discord guild:\nhttps://discord.gg/DMDvzSe\n\nBefore starting chatting in our server make sure to read and understand <#345694151607582732>. Thank you.",
+      "name": "Set Embed Description"
+    },
+    {
+      "title": "Support",
+      "author": "",
+      "color": "#6529fb",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed5",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed5",
+      "message": "We do not offer support. All support is given by the community - voluntarily. <@&362345159956103169> are here to moderate, not to help.\nYou can ping <@&372852291117514763> or <@&363047109269651458> if you require help an nobody is answered your question yet.\nThanks for your understanding.",
+      "name": "Set Embed Description"
+    },
+    {
+      "title": "FAQ",
+      "author": "",
+      "color": "#00e5e5",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed2",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed2",
+      "message": "**How to play music?**\nPlease install the beta version of Discord Bot Maker in order to use music features. Then you can use \"Join Voice Channel\" and \"Play YT Video\".\n**How to get the beta?**\nPlease make a backup of your project folder before up-/downgrading.\n1. Close DBM\n2. Open Steam\n3. Open your software library\n4. Right-click Discord Bot Maker\n5. Select Properties (at the bottom)\n6. Select Betas\n7. Select beta in the drop down menu (no key is required)\n8. DBM should update now. Otherwise restart Steam.",
+      "name": "Set Embed Description"
+    },
+    {
+      "title": "",
+      "author": "",
+      "color": "#00e5e5",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed3",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed3",
+      "message": "**Can I get DBM for free?**\nNo, you need to buy it on Steam. Everything else is illegal and we will not offer you support.\n**Can I get the beta for free?**\nRead above.\n**Can I get music functions without beta?**\nRead above.\n**Does DBM support Steam Family Sharing?**\nUnfortunately, we do not support family sharing.\n**Is DBM supported on MacOS or Linux?**\nWe do not support any other platform than Windows. Learn more by doing `!info mac` in <#407233336335925249>.\n**When is the next update? / Where is the developer? / Is this project dead?**\nDiscord Bot Maker was never supposed to be a long-term project. Therefore, the developer decided to stop working on DBM. Please do not expect an update any time soon. You can use modifications to get more options.\n**How can I keep my bot running 24/7?**\nFirst of all, if you close DBM your bot will go offline. You can export your bot and start it using your command line but it will turn off if you shut down your computer. To keep your bot running 24/7 you need to rent a so called Virtual Private Server (VPS). You can either pay for a VPS or find one for free. There are a few suggestions (with tutorials), just do `!info vps` in <#407233336335925249>.",
+      "name": "Set Embed Description"
+    },
+    {
+      "title": "Troubleshooting",
+      "author": "",
+      "color": "#ee104e",
+      "timestamp": "false",
+      "url": "",
+      "authorIcon": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "storage": "1",
+      "varName": "embed4",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed4",
+      "message": "**[X] does not exist!**\nOne of the actions you used is not (longer) available. This is most likely a missing modification. Make sure to copy and paste the action folder from DBM's installation directory to your project folder.\n**FFMPEG not found**\nThis error should only occur when you are using the beta version and try to play music. First of all, do a backup of your project folder. Please click on the top left menu \"File\". Then click on the following two options \"Install FFMPEG in Project\" and \"Update Music Libraries\". It may take some time until both actions have completed. The error should have been resolved. Otherwise, restart your computer.",
+      "name": "Set Embed Description"
+    },
+    {
+      "comment": "messages above; sending below",
+      "color": "#000000",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "varName": "embed1",
+      "channel": "0",
+      "varName2": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed5",
+      "channel": "0",
+      "varName2": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed2",
+      "channel": "0",
+      "varName2": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed3",
+      "channel": "0",
+      "varName2": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed4",
+      "channel": "0",
+      "varName2": "",
+      "name": "Send Embed Message"
+    }
+  ],
+  "comType": "0"
+}

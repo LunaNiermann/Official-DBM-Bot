@@ -43,16 +43,9 @@
     },
     {
       "info": "1",
-      "find": "mod-area",
+      "find": "mod-alerts",
       "storage": "3",
       "varName": "mod-area",
-      "name": "Find Channel"
-    },
-    {
-      "info": "1",
-      "find": "reports",
-      "storage": "3",
-      "varName": "reports-channel",
       "name": "Find Channel"
     },
     {
@@ -60,6 +53,20 @@
       "find": "join-log",
       "storage": "3",
       "varName": "join-log",
+      "name": "Find Channel"
+    },
+    {
+      "info": "0",
+      "find": "569302852053368832",
+      "storage": "3",
+      "varName": "bug-report-queue",
+      "name": "Find Channel"
+    },
+    {
+      "info": "0",
+      "find": "569320815833776128",
+      "storage": "3",
+      "varName": "bug-reports",
       "name": "Find Channel"
     },
     {

@@ -54,5 +54,6 @@
       "iffalseVal": "",
       "name": "Send Message"
     }
-  ]
+  ],
+  "comType": "0"
 }
